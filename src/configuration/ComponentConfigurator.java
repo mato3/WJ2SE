@@ -28,7 +28,7 @@ public class ComponentConfigurator {
 
     // Configure components from script at start of system.
     public void configure(String task) {
-      
+
         FileInputStream fis = null;
         BufferedInputStream bis = null;
         DataInputStream dis = null;
@@ -40,24 +40,18 @@ public class ComponentConfigurator {
             dis = new DataInputStream(bis);
             // dis.available() returns 0 if the file does not have more lines.
             while (dis.available() != 0) {
+                //get task
                 String delims = "[ ]";
                 String[] tokens = dis.readLine().split(delims);
-               
+                //dynamic load class
                 Object instance = loadClass(tokens[0]);
- 
-                Method myMethod = instance.getClass().getMethod("init",int.class,int.class);
-                
- 
-             // Step 6:
-             // Calling the real method. Passing methodParameter as
-             // parameter. You can pass multiple parameters based on
-             // the signature of the method you are calling. Hence
-             // there is an array.
-               int param1 = Integer.valueOf(tokens[1]);
-               int param2 = Integer.valueOf(tokens[2]);
-               myMethod.invoke(instance,param1,param2);
-                
-               storage.insert(instance);
+                Method myMethod = instance.getClass().getMethod("init", int.class, int.class);
+                //initial object
+                int param1 = Integer.valueOf(tokens[1]);
+                int param2 = Integer.valueOf(tokens[2]);
+                myMethod.invoke(instance, param1, param2);
+                //insert object to repositary
+                storage.insert(instance);
                 System.out.println("OK");
             }
             // dispose all the resources after using them.
@@ -66,7 +60,7 @@ public class ComponentConfigurator {
             dis.close();
 
         } catch (IllegalArgumentException | InvocationTargetException | NoSuchMethodException | SecurityException | InstantiationException | IllegalAccessException | ClassNotFoundException ex) {
-             
+
             Logger.getLogger(ComponentConfigurator.class.getName()).log(Level.SEVERE, null, ex);
         } catch (FileNotFoundException e) {
             System.out.println("File not found!");

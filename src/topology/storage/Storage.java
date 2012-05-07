@@ -19,7 +19,18 @@ public class Storage implements StorageLocal {
    
     @Override
     public void insert(Object object) {
-        manager.put(object.hashCode(), object);
+        String hashKey;
+        if(object instanceof Aisle) {
+            Aisle a = (Aisle)object;
+            int code = a.getCode();
+            hashKey = "A"+code;
+        } else {
+            Rack a = (Rack)object;
+            int code = a.getCode();
+            hashKey = "R"+code;
+        }
+ 
+       manager.put(hashKey, object);
     }
 
     @Override
