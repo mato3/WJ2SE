@@ -1,0 +1,22 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package topology;
+
+import configuration.ComponentConfigurator;
+
+/** 
+ *
+ * @author Mao
+ */
+public class Warehouse {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        ComponentConfigurator c = new ComponentConfigurator("C:/Documents and Settings/Mao/My Documents/NetBeansProjects/warehouse_prototype/src/configuration/load.txt");
+        c.configure(null);
+    }
+}
