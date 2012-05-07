@@ -11,7 +11,7 @@ package topology.storage;
 public interface StorageLocal {
     public void insert(Object object);
     public void remove(Object object);
-    public Object find(Object object);
+    public Object find(String hashKey);
     
     public int addItem();
     public int removeItem();

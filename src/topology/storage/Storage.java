@@ -25,8 +25,8 @@ public class Storage implements StorageLocal {
             int code = a.getCode();
             hashKey = "A"+code;
         } else {
-            Rack a = (Rack)object;
-            int code = a.getCode();
+            Rack r = (Rack)object;
+            int code = r.getCode();
             hashKey = "R"+code;
         }
  
@@ -36,11 +36,11 @@ public class Storage implements StorageLocal {
     @Override
     public void remove(Object object) {
         manager.remove(object.hashCode());
-    }
+    } 
 
     @Override
-    public Object find(Object object) {
-        return manager.get(object.hashCode());
+    public Object find(String hashKey) {
+        return manager.get(hashKey);
     }
     
     @Override
