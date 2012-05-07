@@ -16,7 +16,7 @@ public class Warehouse {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        ComponentConfigurator c = new ComponentConfigurator("C:/Documents and Settings/Mao/My Documents/NetBeansProjects/warehouse_prototype/src/configuration/load.txt");
+        ComponentConfigurator c = new ComponentConfigurator("C:/Documents and Settings/Mao/My Documents/NetBeansProjects/WSE/src/configuration/load.txt");
         c.configure(null);
     }
 }

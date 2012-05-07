@@ -28,6 +28,7 @@ public class ComponentConfigurator {
 
     // Configure components from script at start of system.
     public void configure(String task) {
+      
         FileInputStream fis = null;
         BufferedInputStream bis = null;
         DataInputStream dis = null;
@@ -55,8 +56,9 @@ public class ComponentConfigurator {
                int param1 = Integer.valueOf(tokens[1]);
                int param2 = Integer.valueOf(tokens[2]);
                myMethod.invoke(instance,param1,param2);
-                storage.insert(instance);
-                System.out.println("ok");
+                
+               storage.insert(instance);
+                System.out.println("OK");
             }
             // dispose all the resources after using them.
             fis.close();
@@ -64,9 +66,12 @@ public class ComponentConfigurator {
             dis.close();
 
         } catch (IllegalArgumentException | InvocationTargetException | NoSuchMethodException | SecurityException | InstantiationException | IllegalAccessException | ClassNotFoundException ex) {
+             
             Logger.getLogger(ComponentConfigurator.class.getName()).log(Level.SEVERE, null, ex);
         } catch (FileNotFoundException e) {
+            System.out.println("File not found!");
         } catch (IOException e) {
+            System.out.println("IO Error!");
         }
     }
 
