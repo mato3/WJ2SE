@@ -4,7 +4,7 @@
  */
 package topology;
 
-import configuration.ComponentConfigurator;
+import storage.configuration.ComponentConfigurator;
 
 /** 
  *
@@ -16,7 +16,7 @@ public class Warehouse {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        ComponentConfigurator c = new ComponentConfigurator("C:/Documents and Settings/Mao/My Documents/NetBeansProjects/WSE/src/configuration/load.txt");
+        ComponentConfigurator c = new ComponentConfigurator("C:/Documents and Settings/Mao/My Documents/NetBeansProjects/WSE/src/storage/configuration/load.txt");
         c.configure(null);
         
     }

@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package configuration;
+package storage.configuration;
 
 import java.io.*;
 import java.lang.reflect.InvocationTargetException;
@@ -62,18 +62,18 @@ public class ComponentConfigurator {
             fis.close();
             bis.close();
             dis.close();
-//            Aisle a = (Aisle) storage.find("A"+1);
-//            try {
-//                System.out.println(a.getRacks().get(0).info()); 
-//                a = (Aisle) storage.find("A"+1);
-//                System.out.println(a.getRacks().get(1).info()); 
-//                a = (Aisle) storage.find("A"+2);
-//                System.out.println(a.getRacks().get(0).info()); 
-//                a = (Aisle) storage.find("A"+2);
-//                System.out.println(a.getRacks().get(1).info()); 
-//            } catch (Exception ex) {
-//                Logger.getLogger(ComponentConfigurator.class.getName()).log(Level.SEVERE, null, ex);
-//            }
+            Aisle a = (Aisle) storage.find("A"+1);
+            try {
+                System.out.println(a.getRacks().get(0).info()); 
+                a = (Aisle) storage.find("A"+1);
+                System.out.println(a.getRacks().get(1).info()); 
+                a = (Aisle) storage.find("A"+2);
+                System.out.println(a.getRacks().get(0).info()); 
+                a = (Aisle) storage.find("A"+2);
+                System.out.println(a.getRacks().get(1).info()); 
+            } catch (Exception ex) {
+                Logger.getLogger(ComponentConfigurator.class.getName()).log(Level.SEVERE, null, ex);
+            }
         } catch (IllegalArgumentException | InvocationTargetException | NoSuchMethodException | SecurityException | InstantiationException | IllegalAccessException | ClassNotFoundException ex) {
 
             Logger.getLogger(ComponentConfigurator.class.getName()).log(Level.SEVERE, null, ex);

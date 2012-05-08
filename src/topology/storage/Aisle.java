@@ -4,7 +4,7 @@
  */
 package topology.storage;
 
-import configuration.AbstractComponent;
+import storage.configuration.AbstractComponent;
 import java.util.ArrayList;
 import java.util.List;
 
