@@ -53,13 +53,27 @@ public class ComponentConfigurator {
                 myMethod.invoke(instance, param1, param2);
                 //insert object to repositary
                 storage.insert(instance);
+                if(instance instanceof Rack) {
+                    setRacksToAisle((Rack)instance);
+                }
                 System.out.println("OK");
             }
             // dispose all the resources after using them.
             fis.close();
             bis.close();
             dis.close();
-
+//            Aisle a = (Aisle) storage.find("A"+1);
+//            try {
+//                System.out.println(a.getRacks().get(0).info()); 
+//                a = (Aisle) storage.find("A"+1);
+//                System.out.println(a.getRacks().get(1).info()); 
+//                a = (Aisle) storage.find("A"+2);
+//                System.out.println(a.getRacks().get(0).info()); 
+//                a = (Aisle) storage.find("A"+2);
+//                System.out.println(a.getRacks().get(1).info()); 
+//            } catch (Exception ex) {
+//                Logger.getLogger(ComponentConfigurator.class.getName()).log(Level.SEVERE, null, ex);
+//            }
         } catch (IllegalArgumentException | InvocationTargetException | NoSuchMethodException | SecurityException | InstantiationException | IllegalAccessException | ClassNotFoundException ex) {
 
             Logger.getLogger(ComponentConfigurator.class.getName()).log(Level.SEVERE, null, ex);
@@ -72,6 +86,7 @@ public class ComponentConfigurator {
 
     // Configure component at runtime from admin command.
     public void processTask(String task) {
+        
     }
 
     private Object loadClass(String classToLoad) throws ClassNotFoundException, InstantiationException, IllegalAccessException {
@@ -79,5 +94,20 @@ public class ComponentConfigurator {
         Class classLoaded = loader.loadClass(classToLoad);
         Object instance = classLoaded.newInstance();
         return instance;
+    }
+    int count=0;
+    int aisleID = 1;
+    private void setRacksToAisle(Rack rack) {
+        count += 1;
+        if(count>2) {
+            count = 0;
+            aisleID += 1;
+        }
+        Aisle aisle = (Aisle) storage.find("A"+aisleID);
+        try {
+            aisle.getRacks().add(rack);
+        } catch (Exception ex) {
+            Logger.getLogger(ComponentConfigurator.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }

@@ -18,5 +18,6 @@ public class Warehouse {
     public static void main(String[] args) {
         ComponentConfigurator c = new ComponentConfigurator("C:/Documents and Settings/Mao/My Documents/NetBeansProjects/WSE/src/configuration/load.txt");
         c.configure(null);
+        
     }
 }

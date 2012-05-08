@@ -19,6 +19,9 @@ public class Rack extends AbstractComponent {
     private List<Shelf> shelfs;
     private Boolean isReady;
 
+    public Rack() {
+    }
+    
     public Rack(int code, int capacity) {
         this.code = code;
         this.capacity = capacity;
@@ -44,6 +47,9 @@ public class Rack extends AbstractComponent {
 
     @Override
     public void init(int code, int capacity) {
+        this.code = code;
+        this.capacity = capacity;
+        shelfs = new ArrayList();
         isReady = true;
     }
 
